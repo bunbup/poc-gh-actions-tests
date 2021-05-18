@@ -17,6 +17,9 @@ jobs:
         
       - run: echo $ANDROID_HOME
       
+      - run: sdkmanager build-tools 30
+      - run: sdnmanager platform 30
+      - run: sdkmanager 'system-images;android-30;google_apis;x86_64'
       - run: echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name testAVD --abi google_apis/x86_64 --package 'system-images;android-29;google_apis_playstore;x86'
       - run: avdmanager create avd -n test -k "system-images;android-25;google_apis;x86"
       - run: echo no | $ANDROID_HOME/tools/android create avd --force -n test -t android-21 --abi default/armeabi-v7a
