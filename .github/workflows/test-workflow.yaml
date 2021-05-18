@@ -2,30 +2,39 @@ name: test-workflow
 on: [push]
 jobs:
   first-job:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
-      - run: sudo apt update
-      - run: sudo apt -y install libpulse0
-      - name: Checkout test application
-        uses: actions/checkout@v2
+    - name: checkout
+      uses: actions/checkout@v2
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
+    - name: run tests
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 25
+        script: ./gradlew connectedCheck
+    
+#       - run: sudo apt update
+#       - run: sudo apt -y install libpulse0
+#       - name: Checkout test application
+#         uses: actions/checkout@v2
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v2
+#       - name: Set up JDK 1.8
+#         uses: actions/setup-java@v1
+#         with:
+#           java-version: 1.8
+
+#       - name: Setup Android SDK
+#         uses: android-actions/setup-android@v2
         
-      - run: ls -alR $ANDROID_HOME
+#       - run: ls -alR $ANDROID_HOME
         
-      - run: $ANDROID_HOME/tools/bin/sdkmanager --list
-      - run: echo y | $ANDROID_HOME/tools/bin/sdkmanager 'emulator'
-#       - run: echo y | $ANDROID_HOME/tools/bin/sdkmanager 'system-images;android-25;google_apis;x86'
-      - run: echo y | $ANDROID_HOME/tools/bin/sdkmanager 'system-images;android-25;google_apis;arm64-v8a'
-      - run: echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name testAVD --abi google_apis/arm64-v8a --package 'system-images;android-25;google_apis;arm64-v8a'
-      - run: $ANDROID_HOME/tools/android list avd
-      - run: $ANDROID_HOME/tools/emulator -avd testAVD -no-window -no-boot-anim -no-audio -verbose
+#       - run: $ANDROID_HOME/tools/bin/sdkmanager --list
+#       - run: echo y | $ANDROID_HOME/tools/bin/sdkmanager 'emulator'
+# #       - run: echo y | $ANDROID_HOME/tools/bin/sdkmanager 'system-images;android-25;google_apis;x86'
+#       - run: echo y | $ANDROID_HOME/tools/bin/sdkmanager 'system-images;android-25;google_apis;arm64-v8a'
+#       - run: echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name testAVD --abi google_apis/arm64-v8a --package 'system-images;android-25;google_apis;arm64-v8a'
+#       - run: $ANDROID_HOME/tools/android list avd
+#       - run: $ANDROID_HOME/tools/emulator -avd testAVD -no-window -no-boot-anim -no-audio -verbose
 
-      - run: ls -al
-      - run: echo "hello world"
+#       - run: ls -al
+#       - run: echo "hello world"
