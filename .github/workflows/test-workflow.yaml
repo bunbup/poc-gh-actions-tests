@@ -4,8 +4,8 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-      - run: apt update
-      - run: apt -y install libpulse0
+      - run: sudo apt update
+      - run: sudo apt -y install libpulse0
       - name: Checkout test application
         uses: actions/checkout@v2
 
