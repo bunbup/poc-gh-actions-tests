@@ -2,7 +2,7 @@ name: test-workflow
 on: [push]
 jobs:
   first-job:
-    runs-on: ubuntu-latest
+    runs-on: macos-11.0
     steps:
       - run: sudo apt update
       - run: sudo apt -y install libpulse0
