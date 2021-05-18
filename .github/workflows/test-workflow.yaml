@@ -17,6 +17,7 @@ jobs:
         
       - run: echo $ANDROID_HOME
       
+      - run: sdkmanager --list
       - run: sdkmanager build-tools 30
       - run: sdnmanager platform 30
       - run: sdkmanager 'system-images;android-30;google_apis;x86_64'
