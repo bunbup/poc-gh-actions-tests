@@ -16,6 +16,10 @@ jobs:
         uses: android-actions/setup-android@v2
         
       - run: echo $ANDROID_HOME
+      
+      - run: echo no | $ANDROID_HOME/tools/android create avd --force -n test -t android-21 --abi default/armeabi-v7a
+      - run: $ANDROID_HOME/tools/android list avd
+      - run: $ANDROID_HOME/tools/emulator64-arm -avd test -no-window -no-boot-anim -no-audio -verbose & wait-for-emulator
 
       - run: ls -al
       - run: echo "hello world"
