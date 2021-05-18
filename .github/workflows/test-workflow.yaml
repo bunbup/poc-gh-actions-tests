@@ -17,6 +17,7 @@ jobs:
         
       - run: echo $ANDROID_HOME
       
+      - run: echo y | $ANDROID_HOME/sdk/tools/bin/sdkmanager 'system-images;android-30;google_apis_playstore;x86_64'
       - run: sdkmanager --list
       - run: sdkmanager --install build-tools 30.0.3
       - run: sdkmanager build-tools 30
