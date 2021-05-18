@@ -17,6 +17,7 @@ jobs:
         
       - run: echo $ANDROID_HOME
       
+      - run: avdmanager create avd -n test -k "system-images;android-25;google_apis;x86"
       - run: echo no | $ANDROID_HOME/tools/android create avd --force -n test -t android-21 --abi default/armeabi-v7a
       - run: $ANDROID_HOME/tools/android list avd
       - run: $ANDROID_HOME/tools/emulator64-arm -avd test -no-window -no-boot-anim -no-audio -verbose & wait-for-emulator
