@@ -15,17 +15,8 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
         
-      - run: echo $ANDROID_HOME
-      
       - run: echo y | $ANDROID_HOME/tools/bin/sdkmanager 'system-images;android-30;google_apis_playstore;x86_64'
-      - run: sdkmanager --list
-      - run: sdkmanager --install build-tools 30.0.3
-      - run: sdkmanager build-tools 30
-      - run: sdnmanager platform 30
-      - run: sdkmanager 'system-images;android-30;google_apis;x86_64'
-      - run: echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name testAVD --abi google_apis/x86_64 --package 'system-images;android-29;google_apis_playstore;x86'
-      - run: avdmanager create avd -n test -k "system-images;android-25;google_apis;x86"
-      - run: echo no | $ANDROID_HOME/tools/android create avd --force -n test -t android-21 --abi default/armeabi-v7a
+      - run: echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name testAVD --abi google_apis/x86_64 --package 'system-images;android-30;google_apis_playstore;x86_64'
       - run: $ANDROID_HOME/tools/android list avd
       - run: $ANDROID_HOME/tools/emulator64-arm -avd test -no-window -no-boot-anim -no-audio -verbose & wait-for-emulator
 
