@@ -19,6 +19,10 @@ jobs:
         arch: x86_64
         profile: Nexus 6
         script: ./gradlew connectedCheck
+        
+    - name: Android Test Report
+      uses: asadmansr/android-test-report-action@v1.2.0
+      if: ${{ always() }}
     
 #       - run: sudo apt update
 #       - run: sudo apt -y install libpulse0
