@@ -53,8 +53,10 @@ class PubnubTest {
 
         pnUnderTest.subscribe(channels = listOf(testChannel))
 
-        pnUnderTest.publish(channel = testChannel, message = "test")
-            .sync()
+        repeat(10) {
+            pnUnderTest.publish(channel = testChannel, message = "test")
+                .sync()
+        }
 
         val awaited = countDownLatch.await(10, SECONDS)
 
