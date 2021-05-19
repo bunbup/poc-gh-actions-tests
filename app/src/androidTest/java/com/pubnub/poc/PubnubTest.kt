@@ -56,7 +56,7 @@ class PubnubTest {
         pnUnderTest.publish(channel = testChannel, message = "test")
             .sync()
 
-        val awaited = countDownLatch.await(5, SECONDS)
+        val awaited = countDownLatch.await(10, SECONDS)
 
         assertTrue(awaited)
     }
