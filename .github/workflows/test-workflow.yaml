@@ -25,7 +25,8 @@ jobs:
       if: ${{ always() }} # IMPORTANT: Upload reports regardless of status
       with:
         name: reports
-        path: app/build/reports/androidTests/connected
+#         path: app/build/reports/androidTests/connected
+        path: app/build/outputs/androidTest-results/connected
 
   report:
     runs-on: ubuntu-latest
