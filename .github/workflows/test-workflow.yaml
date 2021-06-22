@@ -9,11 +9,8 @@ jobs:
         target: [google_apis]
     steps:
     - name: some test
-      run: export TEST=blah
+      run:  TEST1=blah; TEST2=bleh echo $TEST1 $TEST2
       
-    - name: next step
-      run: echo $TEST $TEST
-    
     - name: checkout
       uses: actions/checkout@v2
 
