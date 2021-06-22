@@ -8,6 +8,12 @@ jobs:
         api-level: [25, 29, 30]
         target: [google_apis]
     steps:
+    - name: some test
+      run: export TEST=blah
+      
+    - name: next step
+      run: echo $TEST $TEST
+    
     - name: checkout
       uses: actions/checkout@v2
 
