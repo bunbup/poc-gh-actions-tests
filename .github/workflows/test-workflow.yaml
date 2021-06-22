@@ -9,7 +9,7 @@ jobs:
         target: [google_apis]
     steps:
     - name: some test
-      run:  TEST1=blah; TEST2=bleh echo $TEST1 $TEST2
+      run:  TEST1=blah; TEST2=bleh; echo $TEST1 $TEST2
       
     - name: checkout
       uses: actions/checkout@v2
