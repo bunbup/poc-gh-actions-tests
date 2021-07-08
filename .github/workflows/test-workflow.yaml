@@ -6,12 +6,8 @@ jobs:
     runs-on: macos-latest
     steps:       
       - name: make some noise
-        run: echo $GITHUB_REF
-      - name: make some noise
-        run: echo ${{ github.event.release }}
-      - name: make some noise
-        run: echo ${{ github.event }}
-      - name: make some noise
-        run: echo ${{ github }}
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
       
         
