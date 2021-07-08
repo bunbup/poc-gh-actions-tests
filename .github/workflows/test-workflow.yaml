@@ -4,11 +4,8 @@ on: [release]
 jobs:
   test:
     runs-on: macos-latest
-    strategy:
-      matrix:
-        api-level: [29]
     steps:       
       - name: make some noise
-        run: echo Triggered by release
+        run: echo ${{ github.event.GITHUB_REF }}
       
         
