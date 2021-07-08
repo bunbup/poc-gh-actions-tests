@@ -6,7 +6,7 @@ jobs:
     runs-on: macos-latest
     steps:       
       - name: make some noise
-        run: echo ${{ github.event.release.GITHUB_REF }}
+        run: echo $GITHUB_REF
       - name: make some noise
         run: echo ${{ github.event.release }}
       - name: make some noise
